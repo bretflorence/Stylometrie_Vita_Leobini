@@ -1,0 +1,31 @@
+---
+title: "Analyse stylométrique de la Vita Leobini au moyen d'une "
+output: html_notebook
+---
+
+J'indique dans quel dossier je travaille. 
+
+```{r}
+setwd("~/Desktop/Stylometrie_Vita_Leobini/Corpus")
+```
+
+J'installe le package stylo().
+
+```{r}
+if(!require("stylo")){
+  install.packages("stylo")
+  library(stylo)
+}
+```
+
+Je fais une cluster analysis de mon corpus et je conserve le dendrogramme produit sous la forme d'un pdf.
+
+```{r}
+stylo(gui = FALSE, corpus.dir = "corpus", corpus.lang = "Latin",
+             analyzed.features = "c", ngram.size = 3,
+             mfw.min = 2000, mfw.max = 2000,
+             analysis.type = "CA", distance.measure = "wurzburg", pca.visual.flavour = "classic", write.pdf.file = TRUE)
+```
+
+
+
